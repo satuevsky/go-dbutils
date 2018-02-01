@@ -2,7 +2,7 @@ package dbutils
 
 import (
 	"database/sql"
-    "github.com/pkg/errors"
+	"github.com/pkg/errors"
 )
 
 // Драйвер БД. Используется для реализации
@@ -122,22 +122,22 @@ func (db *DB) Delete(i interface{}, tableName string) (sql.Result, error) {
 ///////////////////////////////////
 
 func GetOracleDB(db *sql.DB) (*DB, error) {
-    if db == nil {
-        return nil, errors.New("GetOracleDB: db равен nil")
-    }
-    return &DB{
-        sqlDB:db,
-        driver: Oracle,
-        argPrefix: ":",
-    }, nil
+	if db == nil {
+		return nil, errors.New("GetOracleDB: db равен nil")
+	}
+	return &DB{
+		sqlDB:     db,
+		driver:    Oracle,
+		argPrefix: ":",
+	}, nil
 }
 func GetPostgreDB(db *sql.DB) (*DB, error) {
-    if db == nil {
-        return nil, errors.New("GetPostgreDB: db равен nil")
-    }
-    return &DB{
-        sqlDB:db,
-        driver: Postgre,
-        argPrefix: "$",
-    }, nil
+	if db == nil {
+		return nil, errors.New("GetPostgreDB: db равен nil")
+	}
+	return &DB{
+		sqlDB:     db,
+		driver:    Postgre,
+		argPrefix: "$",
+	}, nil
 }
